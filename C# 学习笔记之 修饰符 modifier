@@ -1,0 +1,65 @@
+# ASP NET 笔记 # ASP.NET 笔记
+
+## 在 [ASP.NET](http://asp.NET) 中创建API有一系列的好处:
+
+1. 非常简单的序列化和反序列化(serialization)，方便对数据结构进行打包传输和解包
+2. 内置的 Authentication 认证和 authorisation 授权
+3. 可以在代码内的 method 前面的 attribute 中配置路由 routing
+4. 可用 .NET HTTP REPL 去测试 web-API，(REPL : read eval print loop)
+
+## 创建api程序
+
+```powershell
+dotnet new webapi --no--https
+
+This command creates the files for a basic web API project, along with a C# project file named ContosoPizza.csproj that will return a list of weather forecasts.
+//The --no-https flag creates an app that will run without an HTTPS certificate, to keep things as simple as possible for local development.
+```
+
+## Structure of webAPI app
+
+* Controllers/ : methods exposed as HTTP endpoint 包含了暴露 HTTP endpoint 的方法
+* Program.cs : 包含  Main  方法的 app 入口
+* Startup.cs : 配置 services 和 app 的 HTTP request pipeline
+* Xxx.csproj : 包含项目的配置元数据
+
+```csharp
+[ApiController]
+[Route("[controller]")]
+public class WeatherForecastController : ControllerBase
+```
+
+---
+## [ApiController] enables opinionated behaviours that make it easier to build web APIs.
+Some behaviours include
+
+parameter source inference,
+
+attribute routing as a requirement, and
+
+model validation error handling enhancements.
+
+## [Route] defines the routing pattern [controller].
+The [controller] token is replaced by the controller's name (case-insensitive, without the Controller suffix). Requests to [http://localhost:5000/weatherforecast](http://localhost:5000/weatherforecast) are handled by this controller.
+
+## [HttpGet] attribute.
+This attribute routes HTTP GET requests to the public IEnumerable Get() method.
+
+## Method, Interface, Attribute，Modifier :
+ILogger : 程序日志记录接口，表示用于执行日志记录的类型。
+
+评论总结：Aggregates most logging patterns to a single method.
+将大多数日志记录模式聚合到一个方法中。
+
+readonly ： 只读 The readonly keyword is a modifier 修饰符
+
+readonly 可用于以下 四个语境当中
+
+1. field declaration : 字段声明中：对字段的赋值（assignment）只能作为声明（declaration）的一部分出现 occur，或者赋值只能在同一个类的构造器里面出现。一个只读字段可以在字段声明或构造器中赋值，重复赋值多次。
+2. 只读字段不能在构造器存在之后赋值，这条规则对值类型和引用类型有不同的影响。
+	* 因为值类型（value type）直接包含了属于自身的值，一个值类型的可读字段是不可变的（immutable）
+	* 因为引用类型包含了对自身值的一个引用,一个只读的引用字段必须总是引用同一个对象。对象本身不是不可变的（not immutable），只读修饰符（modifier）避免了字段被引用到引用类型的另一个不同的实例，但是修饰符不阻止字段的实例数据被只读字段修改。
+	* 在只读结构体（readonly struct）的类型定义中，readonly 表明结构的类型是不可变的
+	* 在结构类型中的实例成员声明中，只读表明，一个实例对象不可以修改结构的状态（state of the struct）
+3. 水水水水水，
+4. 水水水水水
