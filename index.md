@@ -4,5 +4,12 @@ You can use the [editor on GitHub](https://github.com/CharShewFan/CharShewFan.gi
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
+---   
+
 ## C# modifier 
-[study Note - 001: C# modified](www.google.com)
+[study Note - 001: C# modified](blob/master/C%23%20学习笔记之%20修饰符%20modifier)
+
+--- 
+
+## ASP.NET Core Study Note
+[002 a workflow of ASP.NET Core](google.com)
